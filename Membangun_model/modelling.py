@@ -1,57 +1,20 @@
-# import pandas as pd
-# import mlflow
-# import mlflow.sklearn
-
-# # WAJIB supaya MLflow connect ke UI
-# mlflow.set_tracking_uri("http://127.0.0.1:5000")
-# mlflow.set_experiment("Bank Marketing Experiment")
-
-# from sklearn.model_selection import train_test_split, GridSearchCV
-# from sklearn.ensemble import RandomForestClassifier
-# from sklearn.metrics import accuracy_score
-# # load dataset
-# df = pd.read_csv("dataset_preprocessing/bank_marketing_clean.csv")
-
-# X = df.drop("deposit", axis=1)
-# y = df["deposit"]
-
-# # split data
-# X_train, X_test, y_train, y_test = train_test_split(
-#     X, y, test_size=0.2, random_state=42
-# )
-
-# with mlflow.start_run():
-
-#     model = RandomForestClassifier(random_state=42)
-
-#     model.fit(X_train, y_train)
-
-#     y_pred = model.predict(X_test)
-
-#     acc = accuracy_score(y_test, y_pred)
-
-#     mlflow.log_param("model", "RandomForest")
-#     mlflow.log_metric("accuracy", acc)
-
-#     mlflow.sklearn.log_model(model, "model")
-
-#     print("Accuracy:", acc)
 
 import pandas as pd
 import mlflow
 import mlflow.sklearn
+mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-# gunakan autolog
+# aktifkan autolog
 mlflow.sklearn.autolog()
 
 # load dataset
-data = pd.read_csv("Membangun_model/dataset_preprocessing/bank_marketing_clean.csv")
+data = pd.read_csv("dataset_preprocessing/bank_marketing_clean.csv")
 
-# pisahkan fitur dan target
+# fitur dan target
 X = data.drop("deposit", axis=1)
 y = data["deposit"]
 
@@ -60,10 +23,9 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
-# mulai MLflow run
 with mlflow.start_run():
 
-    # buat model
+    # model
     model = RandomForestClassifier(
         n_estimators=100,
         max_depth=10,
@@ -85,4 +47,13 @@ with mlflow.start_run():
     print("Accuracy:", accuracy)
     print("Precision:", precision)
     print("Recall:", recall)
-    print("F1 Score:", f1)
+    print("F1:", f1)
+
+    # log metrics manual
+    mlflow.log_metric("accuracy", accuracy)
+    mlflow.log_metric("precision", precision)
+    mlflow.log_metric("recall", recall)
+    mlflow.log_metric("f1_score", f1)
+
+    # log model manual
+    mlflow.sklearn.log_model(model, "model")
