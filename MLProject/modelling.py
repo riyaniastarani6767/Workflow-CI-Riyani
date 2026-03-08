@@ -69,9 +69,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 mlflow.set_tracking_uri("sqlite:///mlruns.db")
 
 mlflow.set_experiment("bank-marketing-model")
-
-# load dataset
-data = pd.read_csv("dataset_preprocessing/bank_marketing_clean.csv")
+data = pd.read_csv("MLProject/dataset_preprocessing/bank_marketing_clean.csv")
 
 X = data.drop("deposit", axis=1)
 y = data["deposit"]
