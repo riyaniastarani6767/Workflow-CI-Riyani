@@ -21,5 +21,5 @@ jobs:
         run: |
           pip install mlflow pandas scikit-learn
 
-      - name: Run MLflow Project
-        run: mlflow run ./MLProject --env-manager=local
+      - name: Run Training
+        run: python MLProject/modelling.py
