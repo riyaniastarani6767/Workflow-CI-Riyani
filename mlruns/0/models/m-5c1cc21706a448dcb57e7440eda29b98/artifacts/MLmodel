@@ -1,0 +1,60 @@
+artifact_path: /Users/macos/Documents/Eksperimen_SML_I Gusti Ayu Riyani Astarani-siswa/MSML_PROJECT/Workflow-CI/mlruns/0/models/m-5c1cc21706a448dcb57e7440eda29b98/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.19
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.10.0
+model_id: m-5c1cc21706a448dcb57e7440eda29b98
+model_size_bytes: 4465937
+model_uuid: m-5c1cc21706a448dcb57e7440eda29b98
+prompts: null
+run_id: b791580efab8456caec7306dbd7a563c
+signature:
+  inputs: '[{"type": "long", "name": "age", "required": true}, {"type": "long", "name":
+    "balance", "required": true}, {"type": "long", "name": "day", "required": true},
+    {"type": "long", "name": "duration", "required": true}, {"type": "long", "name":
+    "campaign", "required": true}, {"type": "long", "name": "pdays", "required": true},
+    {"type": "long", "name": "previous", "required": true}, {"type": "boolean", "name":
+    "job_blue-collar", "required": true}, {"type": "boolean", "name": "job_entrepreneur",
+    "required": true}, {"type": "boolean", "name": "job_housemaid", "required": true},
+    {"type": "boolean", "name": "job_management", "required": true}, {"type": "boolean",
+    "name": "job_retired", "required": true}, {"type": "boolean", "name": "job_self-employed",
+    "required": true}, {"type": "boolean", "name": "job_services", "required": true},
+    {"type": "boolean", "name": "job_student", "required": true}, {"type": "boolean",
+    "name": "job_technician", "required": true}, {"type": "boolean", "name": "job_unemployed",
+    "required": true}, {"type": "boolean", "name": "job_unknown", "required": true},
+    {"type": "boolean", "name": "marital_married", "required": true}, {"type": "boolean",
+    "name": "marital_single", "required": true}, {"type": "boolean", "name": "education_secondary",
+    "required": true}, {"type": "boolean", "name": "education_tertiary", "required":
+    true}, {"type": "boolean", "name": "education_unknown", "required": true}, {"type":
+    "boolean", "name": "default_yes", "required": true}, {"type": "boolean", "name":
+    "housing_yes", "required": true}, {"type": "boolean", "name": "loan_yes", "required":
+    true}, {"type": "boolean", "name": "contact_telephone", "required": true}, {"type":
+    "boolean", "name": "contact_unknown", "required": true}, {"type": "boolean", "name":
+    "month_aug", "required": true}, {"type": "boolean", "name": "month_dec", "required":
+    true}, {"type": "boolean", "name": "month_feb", "required": true}, {"type": "boolean",
+    "name": "month_jan", "required": true}, {"type": "boolean", "name": "month_jul",
+    "required": true}, {"type": "boolean", "name": "month_jun", "required": true},
+    {"type": "boolean", "name": "month_mar", "required": true}, {"type": "boolean",
+    "name": "month_may", "required": true}, {"type": "boolean", "name": "month_nov",
+    "required": true}, {"type": "boolean", "name": "month_oct", "required": true},
+    {"type": "boolean", "name": "month_sep", "required": true}, {"type": "boolean",
+    "name": "poutcome_other", "required": true}, {"type": "boolean", "name": "poutcome_success",
+    "required": true}, {"type": "boolean", "name": "poutcome_unknown", "required":
+    true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-03-05 11:39:30.292575'
