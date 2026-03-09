@@ -1,0 +1,51 @@
+name: ML Pipeline CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Check Env
+        run: |
+          python --version
+          pip --version
+
+      - name: Install dependencies
+        run: |
+          pip install mlflow
+          pip install pandas
+          pip install scikit-learn
+
+      - name: Set MLflow Tracking URI
+        run: |
+          export MLFLOW_TRACKING_URI=mlruns
+
+      - name: Run MLflow Project
+        run: |
+          mlflow run MLProject
+
+      - name: Install Python dependencies
+        run: |
+          pip install gdown
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: mlflow-artifacts
+          path: mlruns
+
+      - name: Complete job
+        run: echo "Workflow completed successfully"
