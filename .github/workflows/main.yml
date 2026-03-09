@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Run actions/checkout
         uses: actions/checkout@v4
 
@@ -25,13 +24,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install mlflow
-          pip install pandas
-          pip install scikit-learn
+          pip install mlflow pandas scikit-learn
 
       - name: Run mlflow project
         run: |
-          mlflow run MLProject
+          mlflow run MLProject --env-manager=local
 
       - name: Get latest MLflow run_id
         run: |
