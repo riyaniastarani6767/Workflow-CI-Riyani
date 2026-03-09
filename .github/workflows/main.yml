@@ -28,9 +28,9 @@ jobs:
 
       - name: Run MLflow Project
         run: |
-          cd Workflow-CI/MLProject
+          cd MLProject
           mlflow run .
 
       - name: Show MLruns
         run: |
-          ls -R Workflow-CI/MLProject/mlruns
+          ls -R MLProject/mlruns
