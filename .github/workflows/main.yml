@@ -10,7 +10,7 @@ jobs:
 
     steps:
 
-      - name: Checkout repository
+      - name: Run actions/checkout
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Check environment
+      - name: Check Env
         run: |
           python --version
           pip --version
@@ -30,4 +30,9 @@ jobs:
           pip install scikit-learn
 
       - name: Run mlflow project
-        run: mlflow run MLProject
+        run: |
+          mlflow run MLProject
+
+      - name: Get latest MLflow run_id
+        run: |
+          ls -R mlruns
