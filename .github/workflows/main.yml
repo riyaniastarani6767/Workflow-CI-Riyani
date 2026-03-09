@@ -1,4 +1,4 @@
-name: ML Pipeline CI
+name: ML Workflow CI
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run actions/checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -17,19 +17,20 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Check Env
+      - name: Check Environment
         run: |
           python --version
           pip --version
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
           pip install mlflow pandas scikit-learn
 
-      - name: Run mlflow project
+      - name: Run MLflow Project
         run: |
-          cd MLProject && python modelling.py
+          cd Workflow-CI/MLProject
+          mlflow run .
 
-      - name: Get latest MLflow run_id
+      - name: Show MLruns
         run: |
-          ls -R MLProject/mlruns
+          ls -R Workflow-CI/MLProject/mlruns
