@@ -5,8 +5,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-mlflow.end_run()
-mlflow.set_tracking_uri("sqlite:///mlruns.db")
 mlflow.set_experiment("bank-marketing-model")
 
 data = pd.read_csv("dataset_preprocessing/bank_marketing_clean.csv")
@@ -19,11 +17,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 with mlflow.start_run():
-    model = RandomForestClassifier(
-        n_estimators=100,
-        max_depth=10,
-        random_state=42
-    )
+    model = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
 
