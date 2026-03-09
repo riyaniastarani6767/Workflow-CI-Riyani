@@ -30,6 +30,6 @@ jobs:
         run: |
           mlflow run MLProject --env-manager=local
 
-      - name: Show MLruns
+      - name: Get latest MLflow run_id
         run: |
-          ls -R MLProject/mlruns
+          ls -R mlruns
